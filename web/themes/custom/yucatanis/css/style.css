@@ -1,0 +1,154 @@
+/**
+ * @file
+ * Subtheme specific CSS.
+ */
+
+ section.region.region-header {
+    padding-left: 80px;
+}
+.main-menu {
+    padding-right: 40px;
+}
+
+/* .field.field--name-price.field--type-commerce-price.field--label-above .field__label {
+    display: none;
+} */
+
+.view-assistive-gear-for-rent .view-content.row {
+    text-align: center;
+}
+
+.view-assistive-gear-for-rent .card.detailed-cards {
+    display: inline-grid;
+}
+
+section.row.region.region-top-header-bar {
+    background: #332E31;
+}
+.content {
+align-items: normal !important;
+}
+
+h2#block-footercontact-menu {
+    font-size: 22px;
+    color: #000;
+    text-align: left;
+}
+
+h2#block-enterprise-menu {
+    font-size: 22px;
+    color: #000;
+    text-align: left;
+}
+
+h2#block-usefuldata-menu {
+    font-size: 22px;
+    color: #000;
+    text-align: left;
+}
+
+.menu--footer-contact ul{
+    display: inline-block !important;
+}
+
+.menu--enterprise ul.clearfix.nav {
+    display: inline-block;
+}
+
+.menu--useful-data ul.clearfix.nav {
+    display: inline-block;
+}
+
+.footer-travel-details h4 {
+    color: #000;
+}
+
+.site-footer .content a, .site-footer .content a.is-active {
+    color: #fcfcfc;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.email-us .m-subscribe1__title {
+    color: #000;
+}
+
+
+.primary-list li{
+    color: #000 !important;
+}
+
+.accordion-header {
+    margin-bottom: 0;
+    color: #fff;
+}
+
+.paragragh-block h3 p {
+        font-family: "GT Super Display";
+        font-size: 59px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+}
+
+.feature-block a{
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: #FF563C;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    gap: 12px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+a.nav-link--::before{
+    display: none;
+}
+
+.blog-post a {
+    text-decoration: none;
+}
+
+.view-blog-post img {
+    width: 100%;
+}
+
+@media screen and (max-width: 653px) and (min-width: 280px){
+    .top-header-bar .right-nav{
+        gap: 0px;
+    }
+}
+
+.paragragh-block h3{
+    
+    font-size: 45px;
+}
+
+.social-links {
+    position: fixed;
+    left: 5%;
+    top: 50%;
+}
+
+.view-blog-post .col-md-4{
+    padding: 12px;
+}
+
+.tab-slider .slick-slider a{
+    text-decoration: none;
+    color: rgb(26 25 23 / 60%);
+    text-decoration: none;
+}
+
+form#webform-submission-when-how-many-commerce-product-22-add-form {
+    width: 100%;
+}

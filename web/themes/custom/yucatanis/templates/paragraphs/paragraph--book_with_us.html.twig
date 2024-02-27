@@ -1,0 +1,190 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - paragraph.getCreatedTime() will return the paragraph creation timestamp.
+ *   - paragraph.id(): The paragraph ID.
+ *   - paragraph.bundle(): The type of the paragraph, for example, "image" or "text".
+ *   - paragraph.getOwnerId(): The user ID of the paragraph author.
+ *   See Drupal\paragraphs\Entity\Paragraph for a full list of public properties
+ *   and methods for the paragraph object.
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'book-with-us',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+{% block paragraph %}
+	<section{{attributes.addClass(classes)}}>
+		{% block content %}
+			<div class="container ptb-200">
+				{% if paragraph.field_book_with_us_title.value is not empty %}
+					<h3 class="text-center">{{ paragraph.field_book_with_us_title.value|raw }}</h3>
+				{% endif %}
+				<div class="one-by-two-image-grid">
+					{% for key,item in paragraph.field_sub_book_with_us %}
+						{% if key == 0 %}
+							<div class="full-card bg-beige">
+								<img class="img-fluid" src="{{ file_url(item.entity.field_sub_book_image.entity.field_media_image.entity.fileuri)}}" alt="">
+								<h3>{{item.entity.field_sub_book_title.value }}</h3>
+								<p>{{item.entity.field_sub_book_desc.value }}</p>
+							</div>
+						{% endif %}
+						{% if key == 1 %}
+							<div class="half-card-1 ">
+								<img class="img-fluid" src="{{ file_url(item.entity.field_sub_book_image.entity.field_media_image.entity.fileuri)}}" alt="">
+								<h4>{{item.entity.field_sub_book_title.value }}</h4>
+								<p>{{item.entity.field_sub_book_desc.value}}</p>
+							</div>
+						{% endif %}
+						{% if key == 2 %}
+							<div class="half-card-2 ">
+								<img class="img-fluid" src="{{ file_url(item.entity.field_sub_book_image.entity.field_media_image.entity.fileuri)}}" alt="">
+								<h4>{{item.entity.field_sub_book_title.value }}</h4>
+								<p>{{item.entity.field_sub_book_desc.value}}</p>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		{% endblock %}
+	</section>
+{% endblock paragraph %}
+
+{# {% if drupal_view_result('most_advisable_cultural_experiences', 'block_1') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('most_advisable_cultural_experiences','block_1') }}
+		</div>
+	</section>
+{% endif %}
+
+{% if drupal_view_result('essential_rarities', 'block_1') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('essential_rarities','block_1') }}
+		</div>
+	</section>
+{% endif %} #}
+
+{% if drupal_view_result('assistive_gear_for_rent', 'block_1') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('assistive_gear_for_rent','block_1') }}
+		</div>
+	</section>
+{% endif %}
+
+{% if drupal_view_result('assistive_gear_for_rent', 'block_2') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('assistive_gear_for_rent','block_2') }}
+		</div>
+	</section>
+{% endif %}
+
+{% if drupal_view_result('assistive_gear_for_rent', 'block_3') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('assistive_gear_for_rent','block_3') }}
+		</div>
+	</section>
+{% endif %}
+
+{% if drupal_view_result('assistive_gear_for_rent', 'block_3') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('assistive_gear_for_rent','block_4') }}
+		</div>
+	</section>
+{% endif %}
+
+{% if drupal_view_result('assistive_gear_for_rent', 'block_5') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('assistive_gear_for_rent','block_5') }}
+		</div>
+	</section>
+{% endif %}
+
+{% if drupal_view_result('assistive_gear_for_rent', 'block_6') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('assistive_gear_for_rent','block_6') }}
+		</div>
+	</section>
+{% endif %}
+
+<section class="pb-200">
+	<div class="container">
+		<div class="paragraph-wrapper">
+			{{ drupal_entity('block_content', 11) }}
+		</div>
+	</div>
+</section>
+
+{% if drupal_view_result('assistive_gear_for_rent', 'block_7') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('assistive_gear_for_rent','block_7') }}
+		</div>
+	</section>
+{% endif %}
+
+
+{% if drupal_view_result('assistive_gear_for_rent', 'block_8') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('assistive_gear_for_rent','block_8') }}
+		</div>
+	</section>
+{% endif %}
+
+{% if drupal_view_result('assistive_gear_for_rent', 'block_9') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('assistive_gear_for_rent','block_9') }}
+		</div>
+	</section>
+{% endif %}
+
+{% if drupal_view_result('assistive_gear_for_rent', 'block_10') is not empty %}
+	<section class="top-rated-experiences">
+		<div class="container">
+			{{ drupal_view('assistive_gear_for_rent','block_10') }}
+		</div>
+	</section>
+{% endif %}

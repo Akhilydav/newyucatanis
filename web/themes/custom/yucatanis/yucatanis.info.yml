@@ -1,0 +1,36 @@
+name: yucatanis
+type: theme
+description: 'Basic structure for a Bootstrap Barrio SubTheme.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+base theme: bootstrap_barrio
+
+libraries:
+  - yucatanis/global-styling
+  - yucatanis/ckeditor-custom:
+    js:
+      js/ckeditor5/ckeditor.js: {}
+      js/ckeditor5/ckeditor.config.js: {}
+
+libraries-override:
+  ckeditor5/ckeditor5:
+    js:
+      js/override/special-characters.js: js/override/special-characters.js
+
+
+regions:
+  top_header: 'Top header'
+  header: 'Header'
+  toggle_menu: 'toggle menu'
+  main_navigations: 'main_navigations'
+  top_header_bar: 'Top Header Bar'
+  content: 'Content'
+  email_us: 'Email us'
+  footer_first: 'Footer first'
+  footer_second: 'Footer second'
+  footer_third: 'Footer third'
+  footer_fourth: 'Footer fourth'
+  footer_fifth: 'Footer fifth'
+  footer_links: 'Footer link'
+  footer_social: 'footer social'
+

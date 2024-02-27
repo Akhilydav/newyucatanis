@@ -1,0 +1,277 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @ingroup themeable
+ */
+#}
+<article{{attributes}}>
+	{# {{ title_prefix }}
+		  {{ title_suffix }} #}
+	<section class="rental-detail detail-block-banner">
+		<div class="container">
+			<h3>{{product.title}}</h3>
+			<p>{{ product.field_commerce_category|raw }}</p>
+			<div class="row">
+				<div class="col-12">
+					<div class="rating-with-resourses-wrapper ptb-40">
+						<div class="rating-block">
+							<div
+								class="star-icon">
+								{# {{dump(product.field_rating)}} #}
+								{{ product.field_rating }}
+							</div>
+							<div class="rating-content"></div>
+						</div>
+						{% if product_entity.field_moods_list.0 is not empty %}
+							<div class="package-detail">
+								{% for key,items in product_entity.field_moods_list %}
+
+									<div class="package-detail-items">
+										{% if items.entity.field_moods_icon.entity.uri.value is not empty and items.entity.name.value is not empty %}
+											<img src="{{ file_url(items.entity.field_moods_icon.entity.uri.value) }}">
+										{% endif %}
+										{% if items.entity.name.value is not empty %}
+											{{items.entity.name.value}}
+										{% endif %}
+									</div>
+								{% endfor %}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="images-grid-wrapper">
+				<div class="left-side-block">
+
+					{% if product.field_cultural_image.0 is not empty %}
+						<img
+						class="img-fluid" src="{{ file_url(product.field_cultural_image.0['#item'].entity.uri.value) }}" alt="Best Snorkeling">
+					{# {{ dump(<img class="img-fluid" src="{{ file_url(product.field_cultural_image.0['#item'].entity.uri.value) }}"alt="Best Snorkeling">) }} #}
+
+					{% endif %}
+				</div>
+				<div class="right-side-block">
+
+					{% if product.field_cultural_image.1 is not empty %}
+						<a href="" class="btn view-btn">View all images</a>
+						<img class="img1" src="{{ file_url(product.field_cultural_image.1['#item'].entity.uri.value) }}" alt="Best Snorkeling">
+					{% endif %}
+					{% if product.field_cultural_image.2 is not empty %}
+						<img class="img2" src="{{ file_url(product.field_cultural_image.2['#item'].entity.uri.value) }}" alt="Best Snorkeling">
+					{% endif %}
+					{% if product.field_cultural_image.3 is not empty %}
+						<img class="img3" src="{{ file_url(product.field_cultural_image.3['#item'].entity.uri.value) }}" alt="Best Snorkeling">
+					{% endif %}
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+<section>
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-12 col-lg-7 overview-detail-wrapper">
+				{% if product.field_available_for_sale is not empty %}
+					<div class="overview-detail">
+						<h5>
+							{{ product.field_available_for_sale["#title"] }}
+						</h5>
+						<ul class="overview-detail-list">
+							<li>{{ product.field_available_for_sale }}</li>
+						</ul>
+					</div>
+				{% endif %}
+				{% if product.field_available_for_rent is not empty %}
+					<div class="overview-detail">
+						<h5>
+							{{ product.field_available_for_rent["#title"] }}
+						</h5>
+						<ul class="overview-detail-list">
+							<li>{{ product.field_available_for_rent }}</li>
+						</ul>
+					</div>
+				{% endif %}
+
+				{% if product.field_beam_ft is not empty %}
+					<div class="overview-detail">
+						<h5>
+							{{ product.field_beam_ft["#title"] }}
+						</h5>
+						<ul class="overview-detail-list">
+							<li>{{ product.field_beam_ft }}</li>
+						</ul>
+					</div>
+				{% endif %}
+
+				{% if product.field_boat_category is not empty %}
+					<div class="overview-detail">
+						<h5>
+							{{ product.field_boat_category["#title"] }}
+						</h5>
+						<ul class="overview-detail-list">
+							<li>{{ product.field_boat_category }}</li>
+						</ul>
+					</div>
+				{% endif %}
+
+				{% if product.field_loa_ft is not empty %}
+					<div class="overview-detail">
+						<h5>
+							{{ product.field_loa_ft["#title"] }}
+						</h5>
+						<ul class="overview-detail-list">
+							<li>{{ product.field_loa_ft }}</li>
+						</ul>
+					</div>
+				{% endif %}
+
+				{% if product.field_location is not empty %}
+					<div class="overview-detail">
+						<h5>
+							{{ product.field_location["#title"] }}
+						</h5>
+						<ul class="overview-detail-list">
+							<li>{{ product.field_location }}</li>
+						</ul>
+					</div>
+				{% endif %}
+				{% if product.field_make is not empty %}
+					<div class="overview-detail">
+						<h5>
+							{{ product.field_make["#title"] }}
+						</h5>
+						<ul class="overview-detail-list">
+							<li>{{ product.field_make }}</li>
+						</ul>
+					</div>
+				{% endif %}
+
+				{% if product.field_max_passenger_capacity is not empty %}
+					<div class="overview-detail">
+						<h5>
+							{{ product.field_max_passenger_capacity["#title"] }}
+						</h5>
+						<ul class="overview-detail-list">
+							<li>{{ product.field_max_passenger_capacity }}</li>
+						</ul>
+					</div>
+				{% endif %}
+
+				{% if product.field_not_included is not empty %}
+					<div class="overview-detail">
+						<h5>
+							{{ product.field_not_included["#title"] }}
+						</h5>
+						<ul class="overview-detail-list">
+							<li>{{ product.field_not_included }}</li>
+						</ul>
+					</div>
+				{% endif %}
+				<a href="" class="btn show-more-btn rental">Show Less</a>
+			</div>
+			<div class="col-12 col-lg-4 card-gap">
+				<div class="best-seller-booking-card">
+					<div class="info-tag">
+						<p>Highly Rated Natural Location</p>
+					</div>
+					<div class="">
+						{% if type == 'private' %}
+							<h5 class="green-color">{{product.variation_field_private_adult_price}}<span>/ per adult
+								</span>
+							</h5>
+							<h6 class="green-color">{{ product.field_kids_price }}<span>Kids 5 - 11 yrs</span>
+							</h6>
+						{% else  %}
+							{# {{dump(product.variation_price)}} #}
+							<h5 class="green-color">{{product.variation_price}}<span>/ per adult</span>
+							</h5>
+							<h6 class="green-color">{{product.field_kids_price}}<span>Kids 5 - 11 yrs</span>
+							</h6>
+						{% endif %}
+					</div>
+					{# <form class="booking-details"> #}
+					{{ drupal_entity('webform', 'when_how_many') }}
+					{# </form> #}
+				</div>
+
+				<div class="share-media-icons">
+					<div>
+						<p class="m-0">Share Us:</p>
+					</div>
+					<div class="share-icon-wrap">
+
+						<a href="" class="share-btn whatsapp">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
+								<g clip-path="url(#clip0_2811_9084)">
+									<path d="M0.50172 9.88029C0.501255 11.5607 0.940325 13.2014 1.77521 14.6477L0.421875 19.5889L5.47862 18.263C6.87725 19.0244 8.44431 19.4234 10.0368 19.4235H10.0409C15.2979 19.4235 19.5772 15.1457 19.5795 9.88781C19.5805 7.33998 18.5892 4.94416 16.7881 3.14168C14.9873 1.33936 12.5923 0.346256 10.0406 0.345093C4.78296 0.345093 0.503968 4.62261 0.501797 9.88029" fill="url(#paint0_linear_2811_9084)"></path>
+									<path d="M0.161071 9.87721C0.160528 11.6181 0.615334 13.3175 1.47999 14.8155L0.078125 19.9339L5.31619 18.5605C6.75944 19.3474 8.3844 19.7622 10.0379 19.7629H10.0422C15.4877 19.7629 19.9208 15.3312 19.9231 9.88512C19.924 7.24574 18.897 4.7638 17.0316 2.89674C15.166 1.02992 12.6853 0.00108527 10.0422 0C4.59564 0 0.163241 4.43101 0.161071 9.87721ZM3.28045 14.5575L3.08487 14.2471C2.2627 12.9398 1.82875 11.4291 1.82937 9.87783C1.83115 5.35109 5.51518 1.66822 10.0453 1.66822C12.2391 1.66915 14.3008 2.52434 15.8515 4.07597C17.4021 5.62775 18.2553 7.69054 18.2548 9.8845C18.2528 14.4112 14.5687 18.0946 10.0422 18.0946H10.0389C8.56502 18.0938 7.11952 17.698 5.8589 16.95L5.5589 16.7721L2.45053 17.5871L3.28045 14.5574V14.5575Z" fill="url(#paint1_linear_2811_9084)"></path>
+									<path d="M7.57265 5.74789C7.38769 5.3368 7.19303 5.32851 7.01714 5.3213C6.87311 5.31509 6.70846 5.31556 6.54396 5.31556C6.37931 5.31556 6.11179 5.3775 5.88567 5.6244C5.65931 5.87153 5.02148 6.46874 5.02148 7.68339C5.02148 8.89812 5.90621 10.072 6.02955 10.2369C6.15303 10.4015 7.73753 12.9739 10.247 13.9635C12.3326 14.7859 12.757 14.6223 13.2096 14.5811C13.6623 14.54 14.6704 13.984 14.8761 13.4075C15.0819 12.8311 15.0819 12.337 15.0202 12.2337C14.9585 12.1308 14.7938 12.069 14.5469 11.9456C14.2999 11.8221 13.0861 11.2249 12.8599 11.1425C12.6335 11.0601 12.4689 11.019 12.3043 11.2663C12.1396 11.5131 11.6668 12.069 11.5227 12.2337C11.3788 12.3987 11.2347 12.4193 10.9878 12.2958C10.7408 12.1719 9.94567 11.9115 9.00234 11.0705C8.26838 10.4161 7.77288 9.60796 7.62885 9.36075C7.48482 9.11393 7.61342 8.98013 7.73722 8.85711C7.84815 8.74649 7.9842 8.56882 8.10776 8.42471C8.23086 8.28052 8.27195 8.17765 8.35427 8.013C8.43668 7.8482 8.39544 7.70401 8.33381 7.58052C8.27195 7.45703 7.79218 6.23603 7.57265 5.74789Z" fill="white"></path>
+								</g>
+								<defs>
+									<linearGradient id="paint0_linear_2811_9084" x1="958.302" y1="1924.73" x2="958.302" y2="0.345093" gradientunits="userSpaceOnUse">
+										<stop stop-color="#1FAF38"></stop>
+										<stop offset="1" stop-color="#60D669"></stop>
+									</linearGradient>
+									<linearGradient id="paint1_linear_2811_9084" x1="992.326" y1="1993.39" x2="992.326" y2="0" gradientunits="userSpaceOnUse">
+										<stop stop-color="#F9F9F9"></stop>
+										<stop offset="1" stop-color="white"></stop>
+									</linearGradient>
+									<clipPath id="clip0_2811_9084">
+										<rect width="19.845" height="20" fill="white" transform="translate(0.078125)"></rect>
+									</clipPath>
+								</defs>
+							</svg>
+						</a>
+						<a href="" class="share-btn message">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewbox="0 0 20 16" fill="none">
+								<path d="M2.92441 15.8254H17.2981C19.0071 15.8254 20 14.8325 20 12.9302V3.07865C20 1.18373 18.9998 0.190796 17.074 0.190796H2.70029C0.992929 0.190796 0 1.17642 0 3.07865V12.9302C0 14.8398 1.00024 15.8254 2.92441 15.8254ZM2.92067 14.1726C2.09016 14.1726 1.63836 13.745 1.63836 12.8741V3.13482C1.63836 2.27275 2.09016 1.84359 2.92067 1.84359H17.0777C17.8952 1.84359 18.3617 2.27275 18.3617 3.14213V12.8814C18.3617 13.745 17.8952 14.1726 17.0777 14.1726H2.92067ZM10.0138 10.4329C10.6731 10.4329 11.3035 10.1583 11.9436 9.52707L19.1166 2.47405L18.0499 1.39679L11.0348 8.32596C10.6626 8.69643 10.3422 8.85778 10.0138 8.85778C9.6781 8.85778 9.35927 8.68913 8.99291 8.32596L1.94859 1.36755L0.874536 2.44321L8.08254 9.52707C8.72422 10.1583 9.34718 10.4329 10.0138 10.4329ZM17.9382 14.4891L19.0066 13.4118L13.3109 7.77463L12.2409 8.84295L17.9382 14.4891ZM1.01379 13.4191L2.08373 14.4964L7.78669 8.84295L6.71107 7.77463L1.01379 13.4191Z" fill="white"></path>
+							</svg>
+						</a>
+						<a href="" class="share-btn share">
+							<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 22 22" fill="none">
+								<path d="M3.71649 20.0245H18.2839C20.1271 20.0245 21.0747 19.0785 21.0747 17.2617V12.2622C21.0747 11.3716 20.9933 10.8893 20.5637 10.3794L18.0753 7.30808C16.9454 5.93159 16.5258 5.60474 14.9656 5.60474H13.3625V7.00332H15.0171C15.6137 7.00332 15.9851 7.11698 16.4693 7.71265L19.1079 10.9861C19.4185 11.3725 19.2954 11.5396 18.8613 11.5396H13.5202C13.0717 11.5396 12.8737 11.8584 12.8737 12.1934V12.2244C12.8737 13.1499 12.1531 14.1343 11.0002 14.1343C9.85432 14.1343 9.13374 13.1499 9.13374 12.2244V12.1934C9.13374 11.8584 8.92873 11.5396 8.48017 11.5396H3.15314C2.698 11.5396 2.60289 11.35 2.89792 10.9861L5.51713 7.73356C6.01531 7.12395 6.38674 7.00332 6.98327 7.00332H8.64488V5.60474H7.03482C5.4746 5.60474 5.06898 5.92461 3.91812 7.32898L1.43672 10.3794C1.01953 10.8823 0.925781 11.3716 0.925781 12.2622V17.2617C0.925781 19.0785 1.88029 20.0245 3.71649 20.0245ZM3.79169 18.3578C3.00069 18.3578 2.57107 17.9427 2.57107 17.1162V13.0167H7.69209C7.95599 14.5417 9.28089 15.6683 11.0002 15.6683C12.7195 15.6683 14.0444 14.5348 14.3083 13.0167H19.4294V17.1162C19.4294 17.9427 18.9928 18.3578 18.2087 18.3578H3.79169Z" fill="white"></path>
+								<path d="M11.0018 12.3436C11.4335 12.3436 11.7926 11.9854 11.7926 11.5698V3.33823L11.7223 2.07831L12.2534 2.69525L13.4446 3.97236C13.5805 4.12379 13.7776 4.2041 13.9752 4.2041C14.3593 4.2041 14.6735 3.91825 14.6735 3.52744C14.6735 3.31731 14.5963 3.16588 14.4549 3.02296L11.5978 0.271039C11.3955 0.0718006 11.2126 0 11.0018 0C10.798 0 10.6081 0.0718006 10.4058 0.271039L7.54871 3.02296C7.4058 3.16588 7.33008 3.31731 7.33008 3.52744C7.33008 3.91825 7.63736 4.2041 8.01984 4.2041C8.2191 4.2041 8.41612 4.12379 8.55906 3.97236L9.7502 2.69525L10.2812 2.07133L10.2179 3.33823V11.5698C10.2179 11.9854 10.5702 12.3436 11.0018 12.3436Z" fill="white"></path>
+							</svg>
+						</a>
+						<a href="" class="share-btn share-link">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
+								<path d="M10.4047 6.04077L9.0039 7.4534C10.11 7.55651 10.8931 7.90955 11.4544 8.4708C13.0234 10.0382 13.0175 12.2489 11.4669 13.7995L8.40149 16.8557C6.84168 18.4138 4.64775 18.4197 3.08203 16.8599C1.51298 15.285 1.51888 13.0911 3.07704 11.5312L4.66048 9.9494C4.36574 9.2838 4.26965 8.45931 4.43251 7.7487L1.78264 10.3843C-0.479528 12.6458 -0.488013 15.861 1.79186 18.1408C4.08096 20.4316 7.29116 20.4165 9.54831 18.1593L12.7554 14.9463C15.0201 12.6816 15.0337 9.46975 12.7445 7.18984C12.205 6.64869 11.4755 6.23702 10.4047 6.04077ZM9.59316 13.8124L10.994 12.3997C9.88788 12.3042 9.10478 11.9453 8.54353 11.384C6.97613 9.81499 6.98038 7.60594 8.53259 6.05533L11.5904 2.99914C13.1562 1.43932 15.3502 1.43342 16.9175 3.0008C18.4849 4.56819 18.4714 6.77134 16.9208 8.32191L15.3391 9.90376C15.6321 10.5786 15.7207 11.3938 15.5671 12.1061L18.2169 9.46881C20.4774 7.20736 20.4875 3.99974 18.2077 1.71231C15.9169 -0.576793 12.7067 -0.561669 10.442 1.70308L7.24413 4.90683C4.97938 7.17158 4.96592 10.3834 7.25335 12.6633C7.79451 13.2045 8.52228 13.6161 9.59316 13.8124Z" fill="white"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="tageline-block">
+	<div class="container">
+		<div class="title-with-detail">
+			<h6>{{ product_entity.field_tagline_block.entity.field_tagline_text.value }}
+			</h6>
+		</div>
+	</div>
+</section></article></article>

@@ -1,0 +1,53 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/style.css: {}
+      css/bootstrap.min.css: {}
+      css/carouselTicker.css: {}
+      css/main.css: {}
+      css/slick.css: {}
+      css/components/_buttons.css: {}
+      # css/components/_colors.css: {}
+      css/components/_masonary.css: {}
+      css/components/_slick.css: {}
+      css/components/_social-icons.css: {}
+      css/components/_tabs.css: {}
+      css/components/half-width-tab-banner.css: {}
+
+  js:
+    js/jquery.js: {}
+    js/jquery.marquee.min.js: {}
+    //cdnjs.cloudflare.com/ajax/libs/jQuery.Marquee/1.5.0/jquery.marquee.min.js: { type: external}
+    js/bootstrap.min.js: {}
+    js/slick.min.js: {}
+    js/jquery.carouselTicker.min.js: {}
+    js/jquery.carouselTicker.js: {}
+    https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js: { type: external}
+    https://cdn.jsdelivr.net/momentjs/latest/moment.min.js: { type: external}
+    https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js: { type: external}
+    //cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js: {}
+    js/custom.js: {}
+    js/global.js: {}
+
+ckeditor5:
+  version: VERSION
+  js:
+    js/override/special-characters.js : {}
+    
+text_formats:
+  - format: filtered_html
+    editor:
+      ckeditor5: true
+
+
+bootstrap:
+  js:
+    /libraries/popper.js/dist/umd/popper.min.js: {}
+    /libraries/bootstrap/dist/js/bootstrap.bundle.min.js: {}
+  css:
+    component:
+      /libraries/bootstrap/dist/css/bootstrap.min.css: {}
+
+  dependencies:
+    - core/jquery
